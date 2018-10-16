@@ -31,8 +31,8 @@ fun Canvas.drawZSRNode(i : Int, scale : Float, paint : Paint) {
         save()
         rotate(-45f * sc)
         drawLine(0f, 0f, -size * sf, 0f, paint)
-        drawLine(-size, yGap, size, yGap, paint)
         restore()
+        drawLine(-size, yGap, size, yGap, paint)
     }
     restore()
 }
