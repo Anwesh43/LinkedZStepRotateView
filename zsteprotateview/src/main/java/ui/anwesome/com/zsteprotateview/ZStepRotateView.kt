@@ -4,6 +4,7 @@ package ui.anwesome.com.zsteprotateview
  * Created by anweshmishra on 16/10/18.
  */
 
+import android.app.Activity
 import android.view.View
 import android.view.MotionEvent
 import android.graphics.Paint
@@ -193,6 +194,15 @@ class ZStepRotateView(ctx : Context) : View(ctx) {
             zsr.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity : Activity) : ZStepRotateView {
+            val view : ZStepRotateView = ZStepRotateView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
