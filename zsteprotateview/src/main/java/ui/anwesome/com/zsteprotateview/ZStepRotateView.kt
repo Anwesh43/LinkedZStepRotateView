@@ -171,4 +171,26 @@ class ZStepRotateView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ZStepRotateView) {
+        private val animator : Animator = Animator(view)
+
+        private val zsr : ZStepRotate = ZStepRotate(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#BDBDBD"))
+            zsr.draw(canvas, paint)
+            animator.animate {
+                zsr.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            zsr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
